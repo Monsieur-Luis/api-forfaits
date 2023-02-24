@@ -13,7 +13,7 @@ class modele_option{
     
 
     public function __construct($id, $accessible_aux_personnes_handicapes, $menu_sans_allergene, $animaux_acceptes) {
-        $this->id;
+        $this->id = $id;
         $this->accessible_aux_personnes_handicapes = $accessible_aux_personnes_handicapes;
         $this->menu_sans_allergene = $menu_sans_allergene;
         $this->animaux_acceptes = $animaux_acceptes;
@@ -44,6 +44,7 @@ class modele_option{
         $resultatRequete = $mysqli->query("SELECT * FROM options ORDER BY id");
 
         foreach ($resultatRequete as $enregistrement) {
+
             $liste[] = new modele_option($enregistrement['id'], $enregistrement['accessible_aux_personnes_handicapes'], $enregistrement['menu_sans_allergene'], $enregistrement['animaux_acceptes']);
         }
 

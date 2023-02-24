@@ -2,25 +2,41 @@
 
 require_once "./include/config.php";
 
-class modele_forfait{
+class modele_etablissement{
 
-    public $id;  
-    public $nom;
-    public $description_forfait;
-    public $code;
-    public $categories;
-    public $date_debut;
-    public $date_fin ;
-    public $prix;
-    public $nouveau_prix;
-    public $premium;
-    public $nom_etablissement;
+    
+    public $nomEtablissement;
     public $adresse;
     public $ville;
     public $telephone;
     public $courriel;
-    public $site_web;
+    public $siteWeb;
     public $description;
+
+    public function __construct($nom_etablissement, $adresse, $ville, $telephone, $courriel, $site_web, $description) {
+        $this-> nomEtablissement = $nom_etablissement;
+        $this-> adresse = $adresse;
+        $this-> ville = $ville;
+        $this-> telephone = $telephone;
+        $this-> courriel = $courriel;
+        $this-> siteWeb = $site_web;
+        $this-> description = $description;
+    }
+}
+
+class modele_forfait{
+
+    public $id;  
+    public $nom;
+    public $description;
+    public $code;
+    public $categories;
+    public $dateDebut;
+    public $dateFin ;
+    public $prix;
+    public $nouveauPrix;
+    public $premium;
+    public $etablissement;
     
     
     
@@ -31,23 +47,16 @@ class modele_forfait{
 
         $this->id = $id;
         $this->nom = $nom;
-        $this->description_forfait = $description_forfait;
+        $this->description = $description_forfait;
         $this->code = $code;
         $this->categories = $categories;
-        $this->date_debut = $date_debut;
-        $this->date_fin = $date_fin;
+        $this->dateDebut = $date_debut;
+        $this->dateFin = $date_fin;
         $this->prix = $prix;
-        $this->nouveau_prix = $nouveau_prix;
+        $this->nouveauPrix = $nouveau_prix;
         $this->premium  = $premium;
-        $this-> nom_etablissement = $nom_etablissement;
-        $this-> adresse = $adresse;
-        $this-> ville = $ville;
-        $this-> telephone = $telephone;
-        $this-> courriel = $courriel;
-        $this-> site_web = $site_web;
-        $this-> description = $description;
-        
-    
+        $this->description = $description_forfait;
+        $this->etablissement = new modele_etablissement($nom_etablissement, $adresse, $ville, $telephone, $courriel, $site_web, $description);
         
     }
 
